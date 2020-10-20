@@ -14,6 +14,10 @@
         <property name="hibernate.format_sql">true</property>
         <mapping class="ru.levelup.musicians.library.modelmusician.Countries"/>
         <mapping class="ru.levelup.musicians.library.modelmusician.Musicians"/>
+        <mapping class="ru.levelup.musicians.library.modelmusician.Albums"/>
+        <mapping class="ru.levelup.musicians.library.modelmusician.Songs"/>
+        <mapping class="ru.levelup.musicians.library.modelmusician.Genres"/>
+        <mapping class="ru.levelup.musicians.library.modelmusician.Bands"/>
 
     </session-factory>
 </hibernate-configuration>

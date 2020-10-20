@@ -1,16 +1,17 @@
 package ru.levelup.musicians.library.modelmusician;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @ToString
+@Entity
+@NoArgsConstructor
 @Table(name = "albums")
 public class Albums {
 
@@ -23,11 +24,16 @@ public class Albums {
     @Column(name = "album_year", nullable = false)
     private LocalDate album_year;
 
-    public Albums (){};
+    @OneToMany(mappedBy = "albums")
+    //@JoinColumn(name = "album_id")
+    private List<Songs> songs;
+
+
+    //public Albums(){};
 
     @Builder
-    public Albums(Integer album_id, String album_title, LocalDate album_year){
-        this.album_id = album_id;
+    public Albums(String album_title, LocalDate album_year){
+        //this.album_id = album_id;
         this.album_title = album_title;
         this.album_year = album_year;
     }

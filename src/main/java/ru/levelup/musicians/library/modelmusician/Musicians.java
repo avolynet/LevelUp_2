@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@ToString
+@ToString (exclude = "countries")
 @Table (name = "musicians")
 public class Musicians {
     @Id
@@ -27,6 +27,11 @@ public class Musicians {
     private LocalDate born_date;
     @Column(name = "country_id", nullable = false)
     private Integer country_id;
+
+    @ManyToOne
+    @JoinTable()
+    private Countries country;
+
 
     public Musicians (){}
 

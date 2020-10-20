@@ -7,7 +7,8 @@ import javax.persistence.*;
 @Table(name = "genres")
 @Setter
 @Getter
-//@NoArgsConstructor
+@Entity
+@NoArgsConstructor
 @ToString
 public class Genres {
     @Id
@@ -17,7 +18,7 @@ public class Genres {
     @Column(name = "genre", nullable = false)
     private String genre;
 
-    public Genres (){};
+    //public Albums(){};
 
     @Builder
     public Genres (Integer genre_id, String genre){

@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 //hibernate
 @Entity
@@ -22,6 +23,10 @@ public class Countries {
 
     @Column (name = "country_name", nullable = false)
     private String country_name;
+
+    @OneToMany(mappedBy = "countries", fetch = FetchType.EAGER)
+    private List<Bands>bands;
+
 
     public Countries(String country_name) {
         this.country_name = country_name;

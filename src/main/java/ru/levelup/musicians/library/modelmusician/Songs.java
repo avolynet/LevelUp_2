@@ -1,27 +1,30 @@
 package ru.levelup.musicians.library.modelmusician;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "albums")
+@Entity
+@NoArgsConstructor
 @Table(name = "songs")
 public class Songs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (nullable = false)
    private Integer song_id;
-   @Column(nullable = false)
+   @Column(nullable = false, insertable = false, updatable = false)
    private Integer album_id;
    @Column(nullable = false)
    private String song_title;
 
-   public Songs (){};
+   @ManyToOne(fetch = FetchType.EAGER)
+   @JoinColumn(name = "album_id")
+   private Albums albums;
+
+   //public Songs (){};
 
    @Builder
    public Songs(Integer song_id, Integer album_id, String song_title){
